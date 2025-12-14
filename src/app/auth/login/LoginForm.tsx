@@ -33,7 +33,6 @@ export default function LoginForm() {
         email,
         password,
       });
-      console.log(result);
 
       if (result?.error) {
         setLoading(false);
@@ -44,7 +43,6 @@ export default function LoginForm() {
         return toast.success("Login successful!", { id: loading });
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
       return toast.error("Something Went Wrong!", { id: loading });
     }

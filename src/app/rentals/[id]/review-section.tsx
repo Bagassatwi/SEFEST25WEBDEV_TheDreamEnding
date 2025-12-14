@@ -54,18 +54,17 @@ export function ReviewSection({ reviews }: { reviews: ReviewWithUser[] }) {
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star
                           key={star}
-                          className={`h-4 w-4 ${
-                            star <= review.rating
+                          className={`h-4 w-4 ${star <= review.rating
                               ? "text-yellow-400 fill-current"
                               : "text-gray-300"
-                          }`}
+                            }`}
                         />
                       ))}
                     </div>
                   </div>
                 </div>
                 <p className="text-sm text-gray-500">
-                  {review.createdAt.toDateString()}
+                  {review.created_at.toDateString()}
                 </p>
               </div>
               <p className="mb-4 text-gray-600">{review.comment}</p>
