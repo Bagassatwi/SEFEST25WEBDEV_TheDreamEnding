@@ -76,7 +76,7 @@ export default function DashboardPage({
     }
   };
   return (
-    <div className='bg-background min-h-screen p-6 space-y-6'>
+    <div className='bg-background flex-grow p-6 space-y-6'>
       {/* Stats Cards */}
       <div className='md:grid-cols-4 grid grid-cols-1 gap-4'>
         <Card className='bg-primary text-primary-foreground p-4'>
