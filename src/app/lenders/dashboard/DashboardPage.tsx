@@ -222,21 +222,19 @@ export default function DashboardPage({
           )}
         </Card>
 
-        {/* Right Side Content */}
         <div className='space-y-6'>
-          {/* Product Actions */}
           <Card className='bg-accent p-6'>
             <div className='space-y-4'>
               <h3 className='text-accent-foreground text-lg font-semibold'>
                 Product Management
               </h3>
               <div className='lg:flex-row flex flex-col gap-4'>
-                <Button className='flex-1'>
-                  <Plus className='w-4 h-4 mr-2' />
-                  <Link href='/lenders/dashboard/items/add'>
+                <Link className='flex-1' href='/lenders/dashboard/items/add'>
+                  <Button className='w-full'>
+                    <Plus className='w-4 h-4 mr-2' />
                     Add New Product
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
                 <Button variant='outline' className='flex-1' asChild>
                   <Link href='/lenders/dashboard/items'>
                     <List className='w-4 h-4 mr-2' /> View All Products
