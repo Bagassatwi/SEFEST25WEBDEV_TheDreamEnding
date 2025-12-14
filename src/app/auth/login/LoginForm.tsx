@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -90,24 +91,37 @@ export default function LoginForm() {
           </form>
 
           <div className="mt-6">
-            <Separator className="my-4" />
-            <Button
-              disabled={loading}
-              onClick={() => signIn("google", { callbackUrl: "/" })}
-              variant="outline"
-              className="w-full"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5 mr-2"
-              >
-                <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
-              </svg>
-              Login with Google
-            </Button>
+            <div className="flex my-4">
+              <Separator className="flex-1 my-2" />
+              <span className="shrink-0 px-2 text-xs uppercase text-muted-foreground">OR</span>
+              <Separator className="flex-1 my-2" />
+            </div>
           </div>
+          <Button
+            disabled={loading}
+            onClick={() => signIn("google", { callbackUrl: "/" })}
+            variant="outline"
+            className="w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-5 h-5 mr-2"
+            >
+              <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
+            </svg>
+            Login with Google
+          </Button>
+          <p className="mt-4 text-sm text-center text-gray-600">
+            Don&apos;t have an account yet?{" "}
+            <Link
+              href="/auth/signup"
+              className="hover:underline font-medium text-green-600"
+            >
+              Signup now
+            </Link>
+          </p>
         </CardContent>
       </Card>
     </div>

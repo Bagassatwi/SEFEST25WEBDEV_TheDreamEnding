@@ -2,13 +2,13 @@ import prisma from '@/lib/prisma';
 
 export const getDashboardStats = async (ownerId: string) => {
   try {
-    const totalRevenueResult = await prisma.$queryRaw<{ total: number }[]>`
-            SELECT SUM(i.rent_price) as total 
+    const totalRevenueResult = await prisma.$queryRaw<[{ total: number }]>`
+        SELECT SUM(i.rent_price) as total
             FROM "Rental" r
             JOIN "Item" i ON r.item_id = i.id
-            WHERE r.status = 'COMPLETED' OR r.status = 'CONFIRMED' OR r.status = 'ONGOING'
+            WHERE r.status IN ('COMPLETED', 'CONFIRMED', 'ONGOING')
             AND i.owner_id = ${ownerId}
-        `;
+        `
 
     const totalRevenue = Number(totalRevenueResult[0]?.total) || 0;
 

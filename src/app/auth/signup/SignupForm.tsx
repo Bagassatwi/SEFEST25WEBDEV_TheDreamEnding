@@ -16,6 +16,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function SignupForm() {
   const [name, setName] = useState("");
@@ -34,6 +36,7 @@ export default function SignupForm() {
       .min(1, "Email is required"),
     password: z.string().min(8, "Password must be at least 8 characters long"),
   });
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,9 +77,16 @@ export default function SignupForm() {
         });
       }
       setLoading(false);
-      return toast.success("Signup successful! Please login", {
+      toast.success("Signup successful!", {
         id: loadingId,
       });
+      await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      router.push("/");
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log("Error signing up: " + (error as Error).message);
